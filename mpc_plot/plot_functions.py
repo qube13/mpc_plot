@@ -2,11 +2,6 @@ import numpy as np
 import pylab as plt
 
 
-# TODO
-# auf github
-# label auch als liste
-# nummerierung auch variabel
-
 class plotFunctions:
 
 	def getMinMax(act_values1, act_values2, data_ind, plots, rel_delta=10.0):
@@ -22,24 +17,14 @@ class plotFunctions:
 		abs_delta = (maxVal - minVal) * rel_delta / 100.0
 		return (minVal - abs_delta, maxVal + abs_delta)
 
-	# data = "x"
-	# step_a = 1
-	# step_b = 3
-	# data_ind = 0
-	# file_format = ".pdf"
-	# fig_size = (20, 10)
-	# plots = 4
-	# iterations = 3
-	# buffer_ind = 5
-	# label = "HT\_sto\_HT\_"
-	# title = "HT\_sto\_HT"
-	# time_unit = "min"
-	# y_label = r" T in [$^\circ$$\displaystyle\mathrm{C}$]"
-	# colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k', 'w']
-	# colors = ['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue']
+
+	def getLabel(label, k):
+		if (isinstance(label, list)):
+			return label[k]
+		return label + str(k)
 
 
-	def getPlot(data="x", step_a=1, step_b=3, data_ind=0, save_loc="plots/", file_format=".pdf", fig_size=(20, 10), plots=4, iterations=10, buffer_ind=5, label="Label", title="Title", time_unit="sec", y_label="", colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue']):
+	def getPlot(data="x", data_loc="", step_a=1, step_b=3, data_ind=0, save_loc="", file_format=".pdf", fig_size=(20, 10), plots=4, iterations=10, buffer_ind=5, label="Label", title="Title", time_unit="sec", y_label="", colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue']):
 
 		past_values = []
 		past_time_values = []
@@ -57,9 +42,9 @@ class plotFunctions:
 			time_fac = 60.0
 
 		for i in range(iterations):
-			data1 = np.loadtxt("results/iteration_" + str(i) + "_step_" + str(step_a) + "_" + str(data) + "_data.csv", delimiter=",")
-			data2 = np.loadtxt("results/iteration_" + str(i) + "_step_" + str(step_b) + "_" + str(data) + "_data.csv", delimiter=",")
-			time_ind = np.loadtxt("results/iteration_0_final_states.csv", delimiter=",")[0] / time_fac
+			data1 = np.loadtxt(data_loc + "iteration_" + str(i) + "_step_" + str(step_a) + "_" + str(data) + "_data.csv", delimiter=",")
+			data2 = np.loadtxt(data_loc + "iteration_" + str(i) + "_step_" + str(step_b) + "_" + str(data) + "_data.csv", delimiter=",")
+			time_ind = np.loadtxt(data_loc + "iteration_0_final_states.csv", delimiter=",")[0] / time_fac
 
 			time_values = data1[:, 0] / time_fac
 			past_time_values.insert(0, -i * time_ind)
@@ -87,20 +72,20 @@ class plotFunctions:
 
 			for k in range(plots):
 				temp_past_values = [[row[i] for row in past_values] for i in range(len(past_values[0]))][k + data_ind]
-				plt.plot(past_time_values, temp_past_values, "-o", label=label + str(k), color=colors[k],)
+				plt.plot(past_time_values, temp_past_values, "-o", label=plotFunctions.getLabel(label, k), color=colors[k],)
 
 			plt.xlabel(x_label)
 			plt.ylabel(y_label)
 			plt.legend(loc="best")
 			plt.title(title)
-			plt.savefig(save_loc + label + str(i) + "1" + file_format)
+			plt.savefig(save_loc + title + str(i) + "1" + file_format)
 
 			lines = []
 			for k in range(plots):
 				line, = plt.plot(time_values, act_values_st1[:, k + data_ind], "--", color=colors[k])
 				lines.append(line)
 
-			plt.savefig(save_loc + label + str(i) + "2" + file_format)
+			plt.savefig(save_loc + title + str(i) + "2" + file_format)
 
 			for k in range(plots):
 				lines[k].set_alpha(0.2)
@@ -108,6 +93,6 @@ class plotFunctions:
 			for k in range(plots):
 				plt.plot(time_values, act_values_st2[:, k + data_ind], "--", color=colors[k])
 
-			plt.savefig(save_loc + label + str(i) + "3" + file_format)
+			plt.savefig(save_loc + title + str(i) + "3" + file_format)
 
 			plt.close("all")
