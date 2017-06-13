@@ -17,4 +17,4 @@ def getPlot(
  - time_unit="sec", -> unit of time ("s","sec","min" or "h") for x-axis
  - y_label="", -> label of the y-axis
  - colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue'] -> color array for the different curves 
- /n)
+ \n)
