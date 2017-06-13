@@ -1,3 +1,3 @@
-from mpc_plot.plotfunctions import plotFunctions as pf
+from mpc_plot.plot_functions import plotFunctions as pf
 
 pf.getPlot()

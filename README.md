@@ -1,4 +1,7 @@
 # mpc_plot
+
+## Explanations to mpc_plot.plot_functions
+
 def getPlot(
  - data="x", -> describes which data ("x", "u" or "b")
  - step_a=1, step_b=3, -> describes which steps(1 and 2 or 3)
@@ -14,4 +17,4 @@ def getPlot(
  - time_unit="sec", -> unit of time ("s","sec","min" or "h") for x-axis
  - y_label="", -> label of the y-axis
  - colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue'] -> color array for the different curves 
- )
+ /n)
