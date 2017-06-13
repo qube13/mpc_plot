@@ -4,7 +4,7 @@
 
 def getPlot(
  - data="x", -> describes which data ("x", "u" or "b")
- - data_loc="", -> path where the plots should be saved 
+ - data_loc="", -> path where the data is
  - step_a=1, step_b=3, -> describes which steps(1 and 2 or 3)
  - data_ind=0, -> describes in which column the data of the first plot is 
  - save_loc="plots/", -> path where the created plots get saved 

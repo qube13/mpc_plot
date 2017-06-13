@@ -24,7 +24,7 @@ class plotFunctions:
 		return label + str(k)
 
 
-	def getPlot(data="x", data_loc="", step_a=1, step_b=3, data_ind=0, save_loc="", file_format=".pdf", fig_size=(20, 10), plots=4, iterations=10, buffer_ind=5, label="Label", title="Title", time_unit="sec", y_label="", colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue']):
+	def getPlot(data="x", data_loc="", step_a=1, step_b=3, data_ind=0, save_loc="", file_format=".png", fig_size=(20, 10), plots=4, iterations=10, buffer_ind=5, label="Label", title="Title", time_unit="sec", y_label="", colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue']):
 
 		past_values = []
 		past_time_values = []
