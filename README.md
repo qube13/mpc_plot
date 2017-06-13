@@ -1,6 +1,6 @@
 # mpc_plot
 def getPlot(
- - data="x", 
+ - data="x",			-> testet tst tset te t tt tasdta tas tsattsad tstdatsta  tdtasdtatd tssatstastat  as  
  - step_a=1, step_b=3, 
  - data_ind=0, 
  - save_loc="plots/", 
@@ -13,4 +13,5 @@ def getPlot(
  - title="Title", 
  - time_unit="sec", 
  - y_label="", 
- - colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue'])
+ - colors=['darkred', 'darkorange', 'darkgreen', 'darkblue', 'red', 'orange', 'green', 'blue']
+ )
